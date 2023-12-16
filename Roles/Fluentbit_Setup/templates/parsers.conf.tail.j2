@@ -1,0 +1,7 @@
+[PARSER]
+    Name        syslog
+    Format      regex
+    Regex       ^\<(?<PRI>[0-9]+)\>(?<DATE>[^ ]+) (?<TIME>[^ ]+) (?<HOST>[^ ]+) (?<IDENT>[a-zA-Z0-9_\/\.\-]*)(\[(?<PID>[0-9]+)\])?: (?<MESSAGE>.*)$
+    Time_Key    DATE
+    Time_Format %b %d %H:%M:%S
+
