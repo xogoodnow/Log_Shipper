@@ -1,0 +1,44 @@
+---
+- name: check connectivity
+  ping:
+    data: alive
+
+- name: Create the required directories
+  file:
+    mode: 0777
+    path: "{{ directory_log_shipper }}{{ item }}"
+    owner: root
+    group: root
+    state: directory
+  with_items:
+    - Log_Shipper
+    - Log_Shipper/Fluentbit
+
+- name: Set the docker compose file for each elastic instance
+  template:
+    src: "templates/docker-compose.yaml.{{ fluentbit_mode }}.j2"
+    dest: "{{ directory_log_shipper }}Log_Shipper/Fluentbit/docker-compose.yaml"
+
+- name: Set the config file for fleuntbit
+  template:
+    src: "templates/{{ fluentbit_config }}.{{ fluentbit_mode }}.j2"
+    dest: "{{ directory_log_shipper }}Log_Shipper/Fluentbit/{{ fluentbit_config }}"
+
+
+- name: Set the parser for fluentbit
+  template:
+    src: "templates/{{ fluentbit_parser }}.{{ fluentbit_mode }}.j2"
+    dest: "{{ directory_log_shipper }}Log_Shipper/Fluentbit/{{ fluentbit_parser }}"
+
+
+- name: Run the containers
+  community.general.docker_compose:
+    project_src: "{{ directory_log_shipper }}Log_Shipper/Fluentbit/"
+    pull: true
+    recreate: never
+    state: present
+    restarted:
+    remove_orphans: no
+    remove_volumes: false
+
+
