@@ -1,0 +1,13 @@
+fluentbit_version: 2.0.6
+directory_log_shipper: /root/
+fluentbit_config:
+fluentbit_parser:
+fluentbit_mode:         # "tail" or "udp"
+fluent_path_for_tail:
+elastic_user:
+elastic_password:
+fluent_file_path: /var/log/auth.log
+elastic_endpoint:
+index_prefix:
+
+
