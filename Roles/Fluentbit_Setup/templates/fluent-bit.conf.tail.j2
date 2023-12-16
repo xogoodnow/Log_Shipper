@@ -36,7 +36,7 @@
     tls.verify      Off  # Set to On if you want to verify the server's certificate
     tls.debug       4
     Logstash_Format On
-    Logstash_Prefix {{ logstash_prefix }}
+    Logstash_Prefix {{ index_prefix }}-{{ ansible_play_hosts_all.index(inventory_hostname) }}
     Time_Key        @timestamp
     Time_Key_Format %Y-%m-%dT%H:%M:%S.%L
     Replace_Dots    On
