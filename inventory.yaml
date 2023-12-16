@@ -1,0 +1,23 @@
+all:
+    children:
+        servers:
+            hosts:
+                log_shipper_1:
+                    ansible_host:
+                    ansible_user: root
+                    mode: 'fluentbit'
+                    
+                log_shipper_2:
+                    ansible_host:
+                    ansible_user: root
+                    mode: 'fluentbit'
+
+                log_shipper_3:
+                    ansible_host:
+                    ansible_user: root
+                    mode: 'fluentbit'
+
+
+
+
+
