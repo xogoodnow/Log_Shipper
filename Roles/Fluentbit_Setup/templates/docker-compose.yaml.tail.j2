@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   elasticsearch_exporter:
-    container_name: "Fluentbit-{{ ansible_play_hosts_all.index(inventory_hostname) }}"
+    container_name: "Fluentbit-tail-{{ inventory_hostname }}-{{ ansible_play_hosts_all.index(inventory_hostname) }}"
     image: "fluent/fluent-bit:{{ fluentbit_version }}"
     volumes:
       - "{{ directory_log_shipper }}Log_Shipper/Fluentbit/{{ fluentbit_config }}:/fluent-bit/etc/fluent-bit.conf"
@@ -9,5 +9,5 @@ services:
       - "{{ fluent_file_path }}:{{ fluent_file_path }}"
 
     restart: always
-    network_mode: :host
+    network_mode: host
 
