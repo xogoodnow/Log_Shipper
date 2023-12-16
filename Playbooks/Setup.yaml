@@ -13,7 +13,7 @@
       include_role:
         name: "{{ item }}"
       with_items:
-        - $PWD/roles/Install_Docker
-        - $PWD/roles/Fluentbit_Setup
+        - $PWD/Roles/Install_Docker
+        - $PWD/Roles/Fluentbit_Setup
       when: mode ==  'fluentbit'
 
