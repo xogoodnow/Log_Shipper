@@ -1,0 +1,13 @@
+[PARSER]
+    Name        syslog-rfc5424
+    Format      regex
+    Regex       ^\<(?<pri>[0-9]+)\> (?<time>[^ ]+) (?<host>[^ ]+) (?<app>[^ ]+)\[(?<pid>[^\]]+)\]: (?<message>.*)$
+    Time_Key    time
+    Time_Format %Y-%m-%dT%H:%M:%SZ
+    Time_Keep   On
+[PARSER]
+    Name        json
+    Format      json
+    Time_Key    time
+    Time_Format %Y-%m-%dT%H:%M:%SZ
+
