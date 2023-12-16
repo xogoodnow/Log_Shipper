@@ -15,4 +15,5 @@
       with_items:
         - $PWD/roles/Install_Docker
         - $PWD/roles/Fluentbit_Setup
+      when: mode ==  'fluentbit'
 
