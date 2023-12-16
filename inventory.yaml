@@ -18,4 +18,3 @@ all:
                     ansible_user: root
                     mode: 'fluentbit'
 
-                    
