@@ -37,8 +37,9 @@
     pull: true
     recreate: never
     state: present
-    restarted:
+    restarted: false
     remove_orphans: no
     remove_volumes: false
+
 
 
