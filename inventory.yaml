@@ -6,7 +6,8 @@ all:
                     ansible_host:
                     ansible_user: root
                     mode: 'fluentbit'
-                    
+
+
                 log_shipper_2:
                     ansible_host:
                     ansible_user: root
@@ -17,7 +18,4 @@ all:
                     ansible_user: root
                     mode: 'fluentbit'
 
-
-
-
-
+                    
