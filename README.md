@@ -1,7 +1,7 @@
 
 <div align="center">
     <h1>Production Ready Log shipper</h1>
-    <i>A Fluentbit implementation for production use in different modes</i>
+    <i>A Fluentbit implementation for production use on different modes</i>
 
 </div>
 
