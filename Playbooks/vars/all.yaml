@@ -10,7 +10,8 @@ elastic_endpoint:                     #The address by which fluentbit can connec
 index_prefix: "auth-log"              #The prefix of index (timespampt and hostname would be added to this)
 fluentbit_http_port: 2024
 fluentbit_http_listen: 0.0.0.0
-fluentbit_kafka_keystore_location: /root/Kafka/Config/Certs/kafka.server.keystore-first-1.jks
+fluentbit_kafka_keystore_location_On_Node: /root/Kafka/Config/Certs/kafka.server.keystore-first-1.jks
+fluentbit_kafka_keystore_location_On_Container: /Kafka/Config/Certs/kafka.server.keystore-first-1.jks
 fluentbit_kafka_keystore_password: kafkacertpass
 fluentbit_kafka_topics: fluent-bit-auth-log
 fluentbit_kafka_brokers: kafka-1:9092, kafka-2:9092, kafka-3:9092
