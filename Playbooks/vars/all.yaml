@@ -5,7 +5,7 @@ fluentbit_parser: "parsers.conf"     #Name of your parser which is going to be u
 fluentbit_mode: "tail"                #It could be "tail", "udp", "tcp" or "tail-kafka"
 elastic_user: "elastic"               #The user by which elastic can connect to elasticsearch
 elastic_password: "fancyliqurebottle" #The password by which elastic can connect to elasticsearch
-fluent_file_path: "/var/log/auth.log" #The file which is goiing to be monitored and shipped
+fluent_tail_file_path: "/var/log/auth.log" #The file which is goiing to be monitored and shipped
 elastic_endpoint:                     #The address by which fluentbit can connect to elasticsearch
 index_prefix: "auth-log"              #The prefix of index (timespampt and hostname would be added to this)
 fluentbit_http_port: 2024
