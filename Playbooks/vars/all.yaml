@@ -1,8 +1,8 @@
-fluentbit_version: "2.0.6"             #The version of fluentbit
+fluentbit_version: "2.0.6"             #The version of fluentbit, kafka module is only available on kafka 2.2 upwards
 directory_log_shipper: "/root/"        #The directory which fluentbit directory will be created in
 fluentbit_config: "fluent-bit.conf"   #Name of your fluent config which is going to be used by fluentbit
 fluentbit_parser: "parsers.conf"     #Name of your parser which is going to be used by fluentbit
-fluentbit_mode: "tail"                #It could be "tail", "udp" or "tcp"
+fluentbit_mode: "tail"                #It could be "tail", "udp", "tcp" or "tail-kafka"
 elastic_user: "elastic"               #The user by which elastic can connect to elasticsearch
 elastic_password: "fancyliqurebottle" #The password by which elastic can connect to elasticsearch
 fluent_file_path: "/var/log/auth.log" #The file which is goiing to be monitored and shipped
