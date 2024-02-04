@@ -13,7 +13,7 @@
 [INPUT]
     Name             tail
     Tag		         log
-    Path             {{ fluent_file_path }}
+    Path             {{ fluent_tail_file_path }}
     Parser           syslog
     Tag              auth_log
     Refresh_Interval 5
