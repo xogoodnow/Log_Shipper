@@ -14,7 +14,7 @@
     - Log_Shipper
     - Log_Shipper/Fluentbit
 
-- name: Set the docker compose file for each elastic instance
+- name: Set the docker compose file for fluentbit instance
   template:
     src: "templates/docker-compose.yaml.{{ fluentbit_mode }}.j2"
     dest: "{{ directory_log_shipper }}Log_Shipper/Fluentbit/docker-compose.yaml"
