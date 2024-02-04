@@ -1,12 +1,12 @@
 version: "3.8"
 services:
   elasticsearch_exporter:
-    container_name: "Fluentbit-tail-{{ inventory_hostname }}-{{ ansible_play_hosts_all.index(inventory_hostname) }}"
+    container_name: "Fluentbit-{{ fluentbit_mode }}-{{ inventory_hostname }}-{{ ansible_play_hosts_all.index(inventory_hostname) }}"
     image: "fluent/fluent-bit:{{ fluentbit_version }}"
     volumes:
       - "{{ directory_log_shipper }}Log_Shipper/Fluentbit/{{ fluentbit_config }}:/fluent-bit/etc/fluent-bit.conf"
       - "{{ directory_log_shipper }}Log_Shipper/Fluentbit/{{ fluentbit_parser }}:/fluent-bit/etc/parsers.conf"
-      - "{{ fluent_file_path }}:{{ fluent_file_path }}"
+      - "{{ fluent_tail_file_path }}:{{ fluent_tail_file_path }}"
 
     restart: always
     network_mode: host
