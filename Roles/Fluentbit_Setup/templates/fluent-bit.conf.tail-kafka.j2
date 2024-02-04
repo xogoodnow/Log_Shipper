@@ -1,0 +1,69 @@
+[SERVICE]
+    Flush        1
+    Daemon       Off
+    Log_Level    info
+    Parsers_File parsers.conf
+    HTTP_Server On
+    HTTP_Listen 0.0.0.0
+    Health_Check On
+    HTTP_Port
+
+
+
+[INPUT]
+    Name             tail
+    Tag		         log
+    Path             /var/log/auth.log
+    Parser           syslog
+    Tag              auth_log
+    Refresh_Interval 5
+    Skip_Long_Lines  On
+
+
+[FILTER]
+    Name record_modifier
+    Match *
+    Record hostname ${HOSTNAME}
+
+
+
+
+[OUTPUT]
+    Name                                            kafka
+    Match                                           *log*
+    format                                          json
+    timestamp_key                                   @timestamp
+    brokers
+    topics
+    queue_full_retries                              10
+    rdkafka.bootstrap.servers
+    rdkafka.log_level                               7
+    rdkafka.allow.auto.create.topics                true
+    rdkafka.security.protocol                       sasl_ssl
+    rdkafka.ssl.keystore.location
+    rdkafka.ssl.keystore.password
+    rdkafka.enable.ssl.certificate.verification     false
+    rdkafka.enable.auto.offset.store                true
+    rdkafka.sasl.mechanisms                         PLAIN
+    rdkafka.sasl.username
+    rdkafka.sasl.password
+    rdkafka.socket.keepalive.enable                 false
+    rdkafka.socket.nagle.disable                    false
+    rdkafka.socket.max.fails                        3
+    rdkafka.broker.address.ttl                      10000
+    rdkafka.broker.address.family                   any
+    rdkafka.connections.max.idle.ms                 1000
+    rdkafka.reconnect.backoff.ms                    100
+    rdkafka.reconnect.backoff.max.ms                30000
+    rdkafka.ssl.endpoint.identification.algorithm   https
+    rdkafka.fetch.message.max.bytes                 5048576
+    rdkafka.fetch.max.bytes                         102428800
+    rdkafka.check.crcs                              false
+    rdkafka.enable.idempotence                      false
+    rdkafka.queue.buffering.max.ms                   7
+    rdkafka.message.send.max.retries                2147483647
+    rdkafka.retry.backoff.ms                        100
+    rdkafka.retry.backoff.max.ms                    3000
+    rdkafka.request.required.acks                   -1
+    rdkafka.queuing.strategy                        fifo
+
