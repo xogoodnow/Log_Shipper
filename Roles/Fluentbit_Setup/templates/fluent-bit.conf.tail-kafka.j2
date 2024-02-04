@@ -4,16 +4,16 @@
     Log_Level    info
     Parsers_File parsers.conf
     HTTP_Server On
-    HTTP_Listen 0.0.0.0
+    HTTP_Listen {{ fluentbit_http_listen }}
     Health_Check On
-    HTTP_Port
+    HTTP_Port    {{ fluentbit_http_port }}
 
 
 
 [INPUT]
     Name             tail
     Tag		         log
-    Path             /var/log/auth.log
+    Path             {{ fluent_file_path }}
     Parser           syslog
     Tag              auth_log
     Refresh_Interval 5
@@ -33,20 +33,20 @@
     Match                                           *log*
     format                                          json
     timestamp_key                                   @timestamp
-    brokers
-    topics
+    brokers                                         {{ fluentbit_kafka_brokers }}
+    topics                                          {{ fluentbit_kafka_topics }}
     queue_full_retries                              10
-    rdkafka.bootstrap.servers
+    rdkafka.bootstrap.servers                       {{ fluentbit_kafka_brokers }}
     rdkafka.log_level                               7
     rdkafka.allow.auto.create.topics                true
     rdkafka.security.protocol                       sasl_ssl
-    rdkafka.ssl.keystore.location
-    rdkafka.ssl.keystore.password
+    rdkafka.ssl.keystore.location                   {{ fluentbit_kafka_keystore_location }}
+    rdkafka.ssl.keystore.password                   {{ fluentbit_kafka_keystore_password }}
     rdkafka.enable.ssl.certificate.verification     false
     rdkafka.enable.auto.offset.store                true
     rdkafka.sasl.mechanisms                         PLAIN
-    rdkafka.sasl.username
-    rdkafka.sasl.password
+    rdkafka.sasl.username                           {{ fluentbit_kafka_sasl_username }}
+    rdkafka.sasl.password                           {{ fluentbit_kafka_sasl_password }}
     rdkafka.socket.keepalive.enable                 false
     rdkafka.socket.nagle.disable                    false
     rdkafka.socket.max.fails                        3
