@@ -8,5 +8,21 @@ elastic_password: "fancyliqurebottle" #The password by which elastic can connect
 fluent_file_path: "/var/log/auth.log" #The file which is goiing to be monitored and shipped
 elastic_endpoint:                     #The address by which fluentbit can connect to elasticsearch
 index_prefix: "auth-log"              #The prefix of index (timespampt and hostname would be added to this)
+fluentbit_http_port: 2024
+fluentbit_kafka_keystore_location: /root/Kafka/Config/Certs/kafka.server.keystore-first-1.jks
+fluentbit_kafka_keystore_password: kafkacertpass
+fluentbit_kafka_topics: fluent-bit-auth-log
+fluentbit_kafka_brokers: kafka-1:9092, kafka-2:9092, kafka-3:9092
+fluentbit_kafka_security_protocol: sasl_ssl
+fluentbit_kafka_sasl_mechanism: PLAIN
+fluentbit_kafka_sasl_username: kafka-client
+fluentbit_kafka_sasl_password: kafka-password
+
+
+
+
+
+
+
 
 
