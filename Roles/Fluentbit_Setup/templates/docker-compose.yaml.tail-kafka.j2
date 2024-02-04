@@ -6,7 +6,7 @@ services:
     volumes:
       - "{{ directory_log_shipper }}Log_Shipper/Fluentbit/{{ fluentbit_config }}:/fluent-bit/etc/fluent-bit.conf"
       - "{{ directory_log_shipper }}Log_Shipper/Fluentbit/{{ fluentbit_parser }}:/fluent-bit/etc/parsers.conf"
-      - "{{ fluent_file_path }}:{{ fluent_file_path }}"
+      - "{{ fluent_tail_file_path }}:{{ fluent_tail_file_path }}"
 
     restart: always
     network_mode: host
