@@ -40,7 +40,7 @@
     rdkafka.log_level                               7
     rdkafka.allow.auto.create.topics                true
     rdkafka.security.protocol                       {{ fluentbit_kafka_security_protocol }}
-    rdkafka.ssl.keystore.location                   {{ fluentbit_kafka_keystore_location_On_Node }}
+    rdkafka.ssl.keystore.location                   {{ fluentbit_kafka_keystore_location_On_Container }}
     rdkafka.ssl.keystore.password                   {{ fluentbit_kafka_keystore_password }}
     rdkafka.enable.ssl.certificate.verification     false
     rdkafka.enable.auto.offset.store                true
