@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  elasticsearch_exporter:
+  fluentbit_{{ fluentbit_mode }}:
     container_name: "Fluentbit-{{ fluentbit_mode }}-{{ inventory_hostname }}-{{ ansible_play_hosts_all.index(inventory_hostname) }}"
     image: "fluent/fluent-bit:{{ fluentbit_version }}"
     volumes:
